@@ -358,6 +358,19 @@ function local_storage_save () {
   localStorage.setItem("count-read-list", JSON.stringify(obj_book_read));  
 }
 
+/* Carga de lisbros guardados.
+*/
+function load_storage_book () {
+  const content_read_list_tag = document.getElementById('content-read-list');
+  content_read_list_tag.innerHTML = "";
+
+  for(let i=0; i < obj_book_read.length; i++) { 
+    add_figure(content_read_list_tag, obj_book_read[i], "sel_read");
+
+    totals_upd(content_read_list_tag.children.length);
+  }
+}
+
 /* Inicio
    Establecer los valores de rango de páginas.
 */
@@ -365,26 +378,22 @@ range.setAttribute("min", Math.min(...obj_library.library.map(i => i.book.pages)
 range.setAttribute("max", Math.max(...obj_library.library.map(i => i.book.pages)));
 range.value = Math.max(...obj_library.library.map(i => i.book.pages));
 
+/* Sincronización de pestañas.
+*/
+window.addEventListener("storage", event => {
+  if (event.key === "count-read-list") { 
+    obj_book_read = JSON.parse(event.newValue);
+    load_storage_book();
+  }
+});
+
 /* Libros guardados.
 */
 if(obj_book_read == null) 
   obj_book_read = [];
-totals_upd (obj_book_read.length);
 
 /* Carga de controles y libros en la lista.
 */
 load_genres();
 load_book_list("Todas", range.value);
-
-/* Carga de lisbros guardados.
-*/
-for(let i=0; i < obj_book_read.length; i++) {
-  const content_read_list_tag = document.getElementById('content-read-list');
-
-  add_figure(content_read_list_tag, obj_book_read[i], "sel_read");
-}
-
-/*
-document.getElementById('status').firstElementChild.innerHTML = "Sin libros en la lista de lectura";
-document.getElementById('count-book-list').innerHTML = obj_library.library.length;
-*/
+load_storage_book();
