@@ -1,10 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
     <title>Web Library</title>
   </head>
 
   <body>
     
+    <header>
+      <section id="status">
+        <h1>{con/sin} libros en la lista de lectura</h1>
+      </section>
+    </header>
+
+    <main>
+      <section id="book-list">
+        <header>
+          <h2>Lista de libros</h2>
+        </header>
+        <article>
+          <label>Cantidad: <span id="count-book-list">0</span></label>
+        </article>
+        <article id="filters">
+          <label>Filtrar por páginas <br>
+          <input type="range" id="range_pages" onchange="filter()"></label>
+          <label>Filtrar por género <br>
+            <select id="genres" onchange="filter()">
+              <option value="Todas">Todas</option>
+              <!--
+              <option value="Todas">Todas</option>
+              <option value="Acción">Acción</option>
+              <option value="Comedia">Comedia</option>
+              <option value="Terror">Terror</option>
+            -->
+            </select></label>
+        </article>
+        <article id="content-book-list">
+          <!--
+          <figure>
+            <img src="" alt="Portada libro Título">
+            <figcaption>Título</figcaption>
+          </figure>
+        -->
+        </article>
+      </section>
+
+      <section id="read-list">
+        <header>
+          <h2>Lista de lectura</h2>
+        </header>
+        <article>
+          <label>Cantidad: <span id="count-read-list">0</span></label>
+        </article>
+        <article id="content-read-list">
+          <!--
+          <figure>
+            <img src="" alt="Portada libro Título">
+            <figcaption>Título</figcaption>
+          </figure>
+        -->
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
   </body>
 </html>

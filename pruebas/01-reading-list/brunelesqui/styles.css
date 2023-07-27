@@ -1,0 +1,50 @@
+body {
+	background: black;
+	color: white;
+}
+
+main {
+	display: flex;
+	border: solid 1px white;
+}
+
+article label {
+	padding-right: 24px;
+}
+
+figure img {
+	height: 128px;
+}
+
+figcaption {
+	inline-size: min-content;
+}
+
+#book-list {
+	width: 65%;
+	height: auto;
+	padding: 24px;
+}
+
+#filters {
+	display: flex;
+}
+
+#read-list {
+	width: 35%;
+	margin: 12px;
+	padding: 24px;
+	border: solid 1px white;
+}
+
+#content-book-list {
+	display: flex;
+	flex-wrap: wrap;
+	/* overflow: auto;*/
+}
+
+#content-read-list {
+	display: flex;
+	flex-wrap: wrap;
+	/* overflow: auto; */
+}
